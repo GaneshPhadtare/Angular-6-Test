@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#DooRSIDE{
+animation: DooRSIDE 1s ease-in-out infinite alternate;
+/* transform-origin: center; */
+
+}
+#mANHAND{
+    animation: mANHAND 1s ease-in-out infinite alternate;
+}
+#bUTTON{
+    animation: bUTTON 1s ease-in-out infinite alternate;
+   
+}
+#HAND2{
+    animation: HAND2 1s ease-in-out infinite alternate;
+    
+}
+#SHIRTLEFTSIDE{
+    animation: SHIRTLEFTSIDE 1s ease-in-out infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+
+}
+
+@keyframes SHIRTLEFTSIDE
+{
+        from{
+            transform: rotate(-5deg);
+                }
+                to{
+                    transform: rotate(10deg);
+                }
+}
+/* @keyframes HAND2
+{
+        from{
+            transform: rotate(5deg);
+                }
+                to{
+                    transform: rotate(0deg);
+                }
+} */
+
+@keyframes bUTTON
+{
+        from{
+            transform: rotateY(0deg);
+                }
+                to{
+                    transform: rotateY(8deg);
+                }
+}
+
+@keyframes mANHAND
+{
+        from{
+            transform: rotateY(0deg);
+                }
+                to{
+                    transform: rotateY(8deg);
+                }
+}
+@keyframes DooRSIDE{
+    from{
+transform: rotateY(0deg);
+    }
+    to{
+        transform: rotateY(8deg);
+    }
+}

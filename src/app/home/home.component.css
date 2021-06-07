@@ -1,0 +1,182 @@
+h1{
+    color: white;
+    margin-top: 5px;
+}
+.mat-slider{
+    width: 100%;
+    
+}
+.mat-chip{
+    color: white;
+    background-color: blueviolet;
+}
+.example-chip-list {
+    width: 100%;
+  }
+
+ 
+    
+    .search-result-categories>li>a {
+        color: #b6b6b6;
+        font-weight: 400
+    }
+    
+    .search-result-categories>li>a:hover {
+        background-color: #ddd;
+        color: #555
+    }
+    
+    .search-result-categories>li>a>.glyphicon {
+        margin-right: 5px
+    }
+    
+    .search-result-categories>li>a>.badge {
+        float: right
+    }
+    
+    .search-results-count {
+        margin-top: 10px
+    }
+    
+    .search-result-item {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 4px
+    }
+    
+    .search-result-item:after,
+    .search-result-item:before {
+        content: " ";
+        display: table
+    }
+    
+    .search-result-item:after {
+        clear: both
+    }
+    
+    .search-result-item .image-link {
+        display: block;
+        overflow: hidden;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px
+    }
+    
+    @media (min-width:768px) {
+        .search-result-item .image-link {
+            display: inline-block;
+            margin: -20px 0 -20px -20px;
+            width: 200px
+        }
+       
+    }
+    
+    @media (max-width:767px) {
+        .search-result-item .image-link {
+            max-height: 200px
+        }
+    }
+    
+    .search-result-item .image {
+        max-width: 100%
+    }
+    
+    .search-result-item .info {
+        margin-top: 2px;
+        font-size: 12px;
+        color: #999
+    }
+    
+    .search-result-item .description {
+        font-size: 13px
+    }
+    
+    .search-result-item+.search-result-item {
+        margin-top: 20px
+    }
+    
+    @media (min-width:768px) {
+        .search-result-item-body {
+            margin-left: 200px
+        }
+    }
+    
+    .search-result-item-heading {
+        font-weight: 400
+    }
+    
+    .search-result-item-heading>a {
+        color: #555
+    }
+    
+    @media (min-width:768px) {
+        .search-result-item-heading {
+            margin: 0
+        }
+    }
+    @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+        /* Force table to not be like tables anymore */
+        .fontsize{
+            font-size: larger;
+     }
+     .hidesvg{
+        display: none;
+    }
+        table, thead, tbody, th, td, tr {
+            display: block;
+        }
+        /* Hide table headers (but not display: none;, for accessibility) */
+        thead tr {
+            position: absolute;
+            top: -9999px;
+            left: -9999px;
+        }
+        tr {
+            margin: 0 0 1rem 0;
+        }
+        tr:nth-child(odd) {
+            background: #ccc;
+        }
+        td {
+            /* Behave  like a "row" */
+            border: none;
+            border-bottom: 1px solid #eee;
+            position: relative;
+            padding-left: 50%;
+        }
+        td:before {
+            /* Now like a table header */
+            position: absolute;
+            /* Top/left values mimic padding */
+            top: 0;
+            left: 6px;
+            width: 45%;
+            padding-right: 10px;
+            white-space: nowrap;
+        }
+       
+       
+    }
+    .card-custom {
+        overflow: hidden;
+       
+        box-shadow: 0 0 15px rgba(10, 10, 10, 0.3);
+      }
+      .bg-color{
+        background-color: blueviolet;
+      }
+      .profile-edit-btn{
+        border: none;
+        border-radius: 1.5rem;
+        width: 70%;
+        padding: 2%;
+        font-weight: 600;
+        color: #6c757d;
+        cursor: pointer;
+    }
+    .maindiv
+    {
+      background-color: blueviolet;
+      height: auto ;
+      padding:5%;
+      width: auto;
+    }

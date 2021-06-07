@@ -1,0 +1,182 @@
+
+<div class="maindiv ">
+  <div class="row">
+    <div class="col-sm ">
+      <h1>Welcome</h1>
+      <app-main class="hidesvg"> </app-main><br>
+      <button type="button" class="btn btn-primary button" (click)="open(content)">Register</button>
+    </div>
+    <div class="col-sm">
+      <h1>User List</h1>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend card-custom">
+          <span class="input-group-text" id="basic-addon1"><svg  width="16"
+              height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+            </svg></span>
+        </div>
+        <input type="text" class="form-control" placeholder="Search..." [(ngModel)]="term" aria-label="Search"
+          aria-describedby="basic-addon1">
+      </div>
+      <div class=" " style="padding: 10px" *ngFor="let s of binddata | filter:term">
+        <div class="row card-custom" style="padding: 24px;background-color: white;">
+          <div class="col-sm-6 ">
+            <h4 class="search-result-item-heading">{{s.Firstname}} {{s.LastName}}</h4>
+            <p class="description">MobileNumber : {{s.Mobilenumber}} </p>
+            <button class="profile-edit-btn col-sm-4" routerLink="/Profile/{{s.id}}" (click)="hide()">View</button>
+          
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<ng-template #content let-modal>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Registration</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-sm-4">
+          <figure>
+            <img src="assets/Image/image.png" *ngIf="imagetrue == true" style=" width: 120px;" class="border">
+            <img [src]="imgURL" height="200" *ngIf="imgURL" style=" width: 120px;" class="border">
+          </figure>
+        </div>
+        <div class="col-4">
+          <h5>Upload Profile Image</h5>
+          <!-- <p>Image Need to be 310 * 325 px no other file allowed</p> -->
+        </div>
+        <div class="col-sm-12">
+
+          <input #file type="file" accept='image/*' (change)="preview(file.files)" style="height: 50px;"/>
+
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>FirstName</label>
+            <input type="text" formControlName="firstname" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.firstname.errors }" maxlength="20" />
+            <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+              <div *ngIf="f.firstname.errors.pattern">Only alphabetic characters are allowed</div>
+            </div>
+          
+          <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
+            <div *ngIf="f.firstname.errors.required">required</div>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label>LastName</label>
+            <input type="text" formControlName="Lastname" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.Lastname.errors }" maxlength="20" />
+            <div *ngIf="submitted && f.Lastname.errors" class="invalid-feedback">
+              <div *ngIf="f.Lastname.errors.pattern">Only alphabetic characters are allowed</div>
+            </div>
+            <div *ngIf="submitted && f.Lastname.errors" class="invalid-feedback">
+              <div *ngIf="f.Lastname.errors.required">required</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Mobile Number</label>
+            <input type="text" inputmode="numeric" formControlName="MobileNumber" placeholder="+91"  [ngClass]="{ 'is-invalid': submitted && f.MobileNumber.errors }" class="form-control" maxlength="10" />
+            <div *ngIf="submitted && f.MobileNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.MobileNumber.errors.required">required</div>
+            </div>
+            <div *ngIf="submitted && f.MobileNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.MobileNumber.errors.pattern">Numbers Only</div>
+            </div>
+            <div *ngIf="submitted && f.MobileNumber.errors" class="invalid-feedback">
+              <div *ngIf="f.MobileNumber.errors.minLength">Please Enter Valid Number</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group col-sm-12">
+          <label for="exampleInputPassword1">Address</label>
+          <select class="form-control" id="Address" (change)="onChangeAddress($event.target.value)" name="Address">
+            <option value="" disabled="disabled">None</option>
+            <option *ngFor="let Address of Addressdata" [value]="Address.id">{{Address.Address}}</option>
+
+
+          </select>
+          <div>
+          </div>
+        </div>
+
+
+        <div class="form-group col-sm-12">
+          <div class="form-group" *ngIf="homeTextF == true ">
+            <label>Home Address 1</label>
+            <input type="text" formControlName="add1" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.add1.errors }" />
+            <div *ngIf="submitted && f.add1.errors" class="invalid-feedback">
+              <div *ngIf="f.add1.errors.required">required</div>
+            </div>
+            <label>Home Address 2</label>
+            <input type="text" formControlName="add2" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.add1.errors }" />
+            <div *ngIf="submitted && f.add1.errors" class="invalid-feedback">
+              <div *ngIf="f.add1.errors.required">required</div>
+            </div>
+          </div>
+          <div class="form-group" *ngIf=" comapanyTextF == true ">
+            <label>Company Address 1</label>
+            <input type="text" formControlName="Companyadd1" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.Companyadd1.errors }" />
+            <div *ngIf="submitted && f.Companyadd1.errors" class="invalid-feedback">
+              <div *ngIf="f.Companyadd1.errors.required">required</div>
+            </div>
+            <label>Company Address 2</label>
+            <input type="text" formControlName="Companyadd2" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.Companyadd2.errors }" />
+            <div *ngIf="submitted && f.Companyadd2.errors" class="invalid-feedback">
+              <div *ngIf="f.Companyadd2.errors.required">required</div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-sm-12">
+        </div>
+        <div class="col-sm-12">
+          <label>Age</label>
+          <mat-slider class="example-margin" [thumbLabel]="true" [tickInterval]="tickInterval" [(ngModel)]="value"
+            [min]="20" [max]="60" color="primary" [ngModelOptions]="{standalone: true}">
+          </mat-slider>
+          <label class="example-value-label float-left">20</label>
+          <label class="example-value-label float-right">60</label>
+        </div>
+        <div class="col-sm-12">
+          <mat-form-field class="example-chip-list">
+            <mat-chip-list #chipList>
+              <mat-chip *ngFor="let Interest of Interest" [selectable]="selectable" [removable]="removable"
+                (removed)="remove(Interest)">
+                {{Interest.name}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+              </mat-chip>
+              <input placeholder="Interest..." [matChipInputFor]="chipList"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes" [matChipInputAddOnBlur]="addOnBlur"
+                (matChipInputTokenEnd)="add($event)">
+            </mat-chip-list>
+          </mat-form-field>
+        </div>
+
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn ">Submit</button>
+      <button type="button" class="btn " data-dismiss="modal" (click)="modal.close('Save click')">Close</button>
+
+    </div>
+  </form>
+</ng-template>
